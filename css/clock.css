@@ -1,0 +1,86 @@
+/* 通配选择器 *{ } 給所有標籤設置屬性 */
+*, *::after, *::before{
+    box-sizing: border-box;
+    /* font-family: "MS Mincho", 'Raleway', cursive, sans-serif, serif; 襯線字(Serif)、無襯線字(Sans-Serif) */
+}
+
+.clockBody{
+    /* background: linear-gradient(to left, rgb(248, 248, 173), rgb(245, 166, 143)); */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;/*设置元素的最小高度*/ /*view height螢幕可視範圍高度的百分比*/
+    /* overflow: hidden;不显示滚动条 */
+}
+
+.clock{
+    height: 400px;
+    width: 400px;
+    background-color: rgba(255, 255, 255, 0.4);
+    border-radius: 50%; /*將clock變成圓*/
+    border: 2px solid; /*設定邊線*/
+    position: relative;
+}
+
+.clock .number{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    /* background-color: red; */
+    font-size: 1.4rem;
+}
+
+.clock .number1{transform: rotate(30deg);}
+.clock .number2{transform: rotate(60deg);}
+.clock .number3{transform: rotate(90deg);}
+.clock .number4{transform: rotate(120deg);}
+.clock .number5{transform: rotate(150deg);}
+.clock .number6{transform: rotate(180deg);}
+.clock .number7{transform: rotate(210deg);}
+.clock .number8{transform: rotate(240deg);}
+.clock .number9{transform: rotate(270deg);}
+.clock .number10{transform: rotate(300deg);}
+.clock .number11{transform: rotate(330deg);}
+
+.clock .hand{
+    --rotation: 0;
+    position: absolute;
+    left: 50%;
+    bottom: 50%;
+    border-radius: 10px 10px 0 0;/*設定指針圓頭*/
+    transform-origin: bottom;
+    z-index: 10;/*決定元素的堆疊順序，值越大越上層*/
+    transform: translateX(-50%) rotate(calc(var(--rotation) * 1deg));/* calc() 是一個CSS的函數，允許設定屬性的時進行四則運算*/
+}
+
+.clock::after{
+    content: '';/*使用偽元素必加，即便沒內容也需留空*/
+    position: absolute;
+    z-index: 11;
+    width: 12px;
+    height: 12px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: black;
+    border-radius: 50%;
+}
+
+.clock .hand.second{
+    width: 2px;
+    height: 45%;
+    background-color: red;
+}
+
+.clock .hand.minute{
+    width: 5px;
+    height: 40%;
+    background-color: black;
+}
+
+.clock .hand.hour{
+    width: 7px;
+    height: 30%;
+    background-color: black;
+}
